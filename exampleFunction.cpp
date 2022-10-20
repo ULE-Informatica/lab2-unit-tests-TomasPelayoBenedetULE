@@ -51,7 +51,7 @@ uint32_t wrapFunctionShift(uint32_t ui_a, unsigned int ui_b) {
   // INT34-C. Do not shift an expression by a negative number of bits or by greater than or equal to the number of bits that exist in the operand
   // URL:s https://wiki.sei.cmu.edu/confluence/display/c/INT34-C.+Do+not+shift+an+expression+by+a+negative+number+of+bits+or+by+greater+than+or+equal+to+the+number+of+bits+that+exist+in+the+operand
   if (ui_b >= popcount_var) {
-    cout << "Error in wrapFunctionShift with wrapping!!!\nParameters:\n\tui_a=" << to_string(ui_a) << "\n\tui_b="<< to_string(ui_b) << "\n";
+    cout << "Error in wrapFunctionShift!!!\nParameters:\n\tui_a=" << to_string(ui_a) << "\n\tui_b="<< to_string(ui_b) << "\n";
   } else {
     uShift = ui_a << ui_b | ui_a >> (32 - ui_b); 
   }

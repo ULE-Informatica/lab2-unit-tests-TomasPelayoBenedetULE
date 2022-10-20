@@ -34,7 +34,7 @@ Then to exec the binary generated:
 
 ### wrapFunctionAdd
 
-Added a condition that matches when it's gonna be a wrapping with unsigned ints. Following this [link](https://wiki.sei.cmu.edu/confluence/display/c/INT30-C.+Ensure+that+unsigned+integer+operations+do+not+wrap) we can find this scheme:
+Added a condition that matches when it's gonna be a wrapping with unsigned ints. Following this [link (INT30-C)](https://wiki.sei.cmu.edu/confluence/display/c/INT30-C.+Ensure+that+unsigned+integer+operations+do+not+wrap) we can find this scheme:
 
 ```cpp
 void func(unsigned int ui_a, unsigned int ui_b) {
@@ -87,7 +87,7 @@ Now appears a new problem, with the condition:
   ...
 ```
 
-The problem appears when `ui_a` i 0, because there's a division by 0. Following this [link](https://wiki.sei.cmu.edu/confluence/display/c/INT30-C.+Ensure+that+unsigned+integer+operations+do+not+wrap) we can find this scheme:
+The problem appears when `ui_a` i 0, because there's a division by 0. Following this [link (INT33-C)](https://wiki.sei.cmu.edu/confluence/display/c/INT33-C.+Ensure+that+division+and+remainder+operations+do+not+result+in+divide-by-zero+errors) we can find this scheme:
 
 ```cpp
 void func(signed long s_a, signed long s_b) {
@@ -116,7 +116,7 @@ It's added a condition so `ui_a` is not 0, as is it presented in the following l
 
 ### wrapFunctionShift
 
-Added a condition that matches when it's gonna be a wrapping with shifting. Following this [link](https://wiki.sei.cmu.edu/confluence/display/c/INT34-C.+Do+not+shift+an+expression+by+a+negative+number+of+bits+or+by+greater+than+or+equal+to+the+number+of+bits+that+exist+in+the+operand) we can find this two schemes, one for left shifting and other one for right shifting:
+Added a condition that matches when it's gonna be a wrapping with shifting. Following this [link (INT34-C)](https://wiki.sei.cmu.edu/confluence/display/c/INT34-C.+Do+not+shift+an+expression+by+a+negative+number+of+bits+or+by+greater+than+or+equal+to+the+number+of+bits+that+exist+in+the+operand) we can find this two schemes, one for left shifting and other one for right shifting:
 
 
 ```cpp
@@ -149,7 +149,11 @@ void func(unsigned int ui_a, unsigned int ui_b) {
 }
 ```
 
-In this case, popcount is no aviable for our version of C++ but we have `__builtin_popcount`, this do the same thing, no differences. Because of efficiency, there are a constant variable that have the value of the funcion in `UINT32_MAX` that is the maxium value of an `uint32_t`.
+In this case, popcount is no aviable for our version of C++ but we have `__builtin_popcount`, this do the same thing, no differences.
+
+Because of efficiency, there are a constant variable that have the value of the funcion in `UINT32_MAX` that is the maxium value of an `uint32_t`.
+
+It has been written the following lines in our exercise:
 
 ```cpp
 const int popcount_var =__builtin_popcount(UINT32_MAX);
@@ -157,7 +161,7 @@ const int popcount_var =__builtin_popcount(UINT32_MAX);
   uint32_t uShift = -1; 
   
   if (ui_b >= popcount_var) {
-    cout << "Error in wrapFunctionShift with wrapping!!!\nParameters:\n\tui_a=" << to_string(ui_a) << "\n\tui_b="<< to_string(ui_b) << "\n";
+    cout << "Error in wrapFunctionShift!!!\nParameters:\n\tui_a=" << to_string(ui_a) << "\n\tui_b="<< to_string(ui_b) << "\n";
   } else {
     uShift = ui_a << ui_b | ui_a >> (32 - ui_b); 
   }
@@ -166,3 +170,21 @@ const int popcount_var =__builtin_popcount(UINT32_MAX);
 ```
 
 ### Test fix
+
+To complete the exercise and pass with an `OK` all of tests it's necesary to do some changes in `tests.cpp`.
+
+The first one is in the second test, it's necesary to put an `-1` instead of `0`, because now addition wrapping is fixed.
+
+```cpp
+TEST(wrapAddFunctionTest, WrappingNums) {
+  ASSERT_EQ(-1, wrapFunctionAdd(UINT_MAX,1));
+}
+```
+
+The second one is the fourth test, it's necesary to put an `-1` instead of `0`, because now multiplication wrapping is fixed.
+
+```cpp
+TEST(wrapMulFunctionTest, WrappingMulNums) {
+    ASSERT_EQ(-1, wrapFunctionMul(UINT_MAX, UINT_MAX));
+}
+```
