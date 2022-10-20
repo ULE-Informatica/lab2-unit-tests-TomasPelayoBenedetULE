@@ -53,7 +53,7 @@ It has been written the following lines in our exercise:
 ```bash
   unsigned int usum;
   if (UINT_MAX - ui_a < ui_b) {
-    cout << "Error in wrapFuntionAdd with wrapping!!!\nParameters:\n\tui_a=" << to_string(ui_a) << "\n\tui_b="<< to_string(ui_b) << "\n";
+    cout << \"Error in wrapFuntionAdd with wrapping!!!\nParameters:\n\tui_a=\" << to_string(ui_a) << \"\n\tui_b=\"<< to_string(ui_b) << \"\n\";
     usum = -1;
   }else{
     usum = ui_a + ui_b;
