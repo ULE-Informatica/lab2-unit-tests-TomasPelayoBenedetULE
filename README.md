@@ -20,7 +20,7 @@ Now, GTest is installed
 
 ### wrapFunctionAdd
 
-Added a condition that matches when it's gonna be a wrapping with unsigned ints. Following this [link](https://wiki.sei.cmu.edu/confluence/display/c/INT30-C.+Ensure+that+unsigned+integer+operations+do+not+wrap) it's follow this scheme:
+Added a condition that matches when it's gonna be a wrapping with unsigned ints. Following this [link](https://wiki.sei.cmu.edu/confluence/display/c/INT30-C.+Ensure+that+unsigned+integer+operations+do+not+wrap) we can find this scheme:
 
 ```bash
 void func(unsigned int ui_a, unsigned int ui_b) {
