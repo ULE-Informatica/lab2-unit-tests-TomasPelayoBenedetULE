@@ -11,7 +11,7 @@ unsigned int wrapFunctionAdd(unsigned int ui_a, unsigned int ui_b) {
   // URL: https://wiki.sei.cmu.edu/confluence/display/c/INT30-C.+Ensure+that+unsigned+integer+operations+do+not+wrap
   unsigned int usum;
   if (UINT_MAX - ui_a < ui_b) {
-    cout << "Error in wrapFuntionAdd with wrapping!!!\nParameters:\n\tui_a=" << to_string(ui_a) << "\n\tui_b="<< to_string(ui_b) << "\n";
+    cout << "Error in wrapFuntionAdd with unsigned int wrapping!!!\nParameters:\n\tui_a=" << to_string(ui_a) << "\n\tui_b="<< to_string(ui_b) << "\n";
     usum = -1;
   }else{
     usum = ui_a + ui_b;
@@ -21,7 +21,22 @@ unsigned int wrapFunctionAdd(unsigned int ui_a, unsigned int ui_b) {
 
 unsigned int wrapFunctionMul(unsigned int ui_a, unsigned int ui_b) {
   unsigned umul = ui_a;
-  umul *= ui_b;
+  
+  // INT33-C. Ensure that division and remainder operations do not result in divide-by-zero errors
+  // URL: https://wiki.sei.cmu.edu/confluence/display/c/INT33-C.+Ensure+that+division+and+remainder+operations+do+not+result+in+divide-by-zero+errors
+  if (ui_a == 0) { 
+    return 0;
+  }
+
+  // INT30-C. Ensure that unsigned integer operations do not wrap
+  // URL: https://wiki.sei.cmu.edu/confluence/display/c/INT30-C.+Ensure+that+unsigned+integer+operations+do+not+wrap
+  if (UINT_MAX / ui_a < ui_b) {
+    cout << "Error in wrapFunctionMul with unsigned int wrapping!!!\nParameters:\n\tui_a=" << to_string(ui_a) << "\n\tui_b="<< to_string(ui_b) << "\n";
+    umul = -1;
+  }else{
+    umul *= ui_b;
+  }
+  
   return umul;
 }
 
