@@ -24,6 +24,11 @@ There are a script that compile the exercise:
 ./compile.sh
 ```
 
+Then to exec the binary generated:
+
+```bash
+./runTests
+```
 
 ## Work done
 
