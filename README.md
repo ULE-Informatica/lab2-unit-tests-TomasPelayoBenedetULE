@@ -101,7 +101,7 @@ void func(signed long s_a, signed long s_b) {
 }
 ```
 
-So we add a condition so `ui_a` is not 0, as is it presented in the following lines:
+It's added a condition so `ui_a` is not 0, as is it presented in the following lines:
 
 ```cpp
   unsigned umul = ui_a;
