@@ -9,7 +9,8 @@ TEST(wrapAddFunctionTest, NonWrappingNums) {
 }
  
 TEST(wrapAddFunctionTest, WrappingNums) {
-    ASSERT_EQ(0, wrapFunctionAdd(UINT_MAX,1));
+    // NOTE: Changed after modification of exampleFunction.cpp
+    ASSERT_EQ(-1, wrapFunctionAdd(UINT_MAX,1));
 }
 
 TEST(wrapMulFunctionTest, NonWrappingMulNums) { 

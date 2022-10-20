@@ -1,6 +1,6 @@
-# dps-laboratory2
+# DPS-laboratory2
 
-## How to install (Arch Linux)
+## How to install Google Tests (Arch Linux)
 
 To install Google Tests, first install the Community package with the following line:
 
@@ -12,4 +12,37 @@ The second step is to set `GTEST_INCLUDE_DIRS` env variable with the following l
 
 ```bash
 GTEST_INCLUDE_DIRS=/usr/src/googletest
+```
+
+Now, GTest is installed
+
+## Work done
+
+### wrapFunctionAdd
+
+Added a condition that matches when it's gonna be a wrapping with unsigned ints. Following this [link](https://wiki.sei.cmu.edu/confluence/display/c/INT30-C.+Ensure+that+unsigned+integer+operations+do+not+wrap) it's follow this scheme:
+
+```bash
+void func(unsigned int ui_a, unsigned int ui_b) {
+  unsigned int usum;
+  if (UINT_MAX - ui_a < ui_b) {
+    /* Handle error */
+  } else {
+    usum = ui_a + ui_b;
+  }
+  /* ... */
+}
+```
+
+It has been written the following lines in our exercise:
+
+```bash
+	unsigned int usum;
+  if (UINT_MAX - ui_a < ui_b) {
+    cout << "Error in wrapFuntionAdd with wrapping!!!\nParameters:\n\tui_a=" << to_string(ui_a) << "\n\tui_b="<< to_string(ui_b) << "\n";
+    usum = -1;
+  }else{
+    usum = ui_a + ui_b;
+  }
+  return usum;
 ```
