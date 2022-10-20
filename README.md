@@ -16,6 +16,15 @@ GTEST_INCLUDE_DIRS=/usr/src/googletest
 
 Now, GTest is installed
 
+## How to run
+
+There are a script that compile the exercise:
+
+```bash
+./compile.sh
+```
+
+
 ## Work done
 
 ### wrapFunctionAdd
