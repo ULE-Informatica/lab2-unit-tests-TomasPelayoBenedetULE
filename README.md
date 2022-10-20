@@ -37,7 +37,7 @@ void func(unsigned int ui_a, unsigned int ui_b) {
 It has been written the following lines in our exercise:
 
 ```bash
-	unsigned int usum;
+  unsigned int usum;
   if (UINT_MAX - ui_a < ui_b) {
     cout << "Error in wrapFuntionAdd with wrapping!!!\nParameters:\n\tui_a=" << to_string(ui_a) << "\n\tui_b="<< to_string(ui_b) << "\n";
     usum = -1;
