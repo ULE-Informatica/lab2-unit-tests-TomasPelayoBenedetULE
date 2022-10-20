@@ -1,3 +1,0 @@
-/home/tomenos/2.UniPracticas/DPS/lab2-unit-tests-TomasPelayoBenedetULE/CMakeFiles/runTests.dir
-/home/tomenos/2.UniPracticas/DPS/lab2-unit-tests-TomasPelayoBenedetULE/CMakeFiles/edit_cache.dir
-/home/tomenos/2.UniPracticas/DPS/lab2-unit-tests-TomasPelayoBenedetULE/CMakeFiles/rebuild_cache.dir

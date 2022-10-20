@@ -1,1 +1,0 @@
-/usr/bin/c++ -rdynamic CMakeFiles/runTests.dir/tests.cpp.o -o runTests  /usr/lib/libgtest.so.1.12.1 -lpthread -pthread
