@@ -116,4 +116,53 @@ It's added a condition so `ui_a` is not 0, as is it presented in the following l
 
 ### wrapFunctionShift
 
+Added a condition that matches when it's gonna be a wrapping with shifting. Following this [link](https://wiki.sei.cmu.edu/confluence/display/c/INT34-C.+Do+not+shift+an+expression+by+a+negative+number+of+bits+or+by+greater+than+or+equal+to+the+number+of+bits+that+exist+in+the+operand) we can find this two schemes, one for left shifting and other one for right shifting:
+
+
+```cpp
+extern size_t popcount(uintmax_t);
+#define PRECISION(x) popcount(x)
+  
+void func(unsigned int ui_a, unsigned int ui_b) {
+  unsigned int uresult = 0;
+  if (ui_b >= PRECISION(UINT_MAX)) {
+    /* Handle error */
+  } else {
+    uresult = ui_a << ui_b;
+  }
+  /* ... */
+}
+```
+
+```cpp
+extern size_t popcount(uintmax_t);
+#define PRECISION(x) popcount(x)
+  
+void func(unsigned int ui_a, unsigned int ui_b) {
+  unsigned int uresult = 0;
+  if (ui_b >= PRECISION(UINT_MAX)) {
+    /* Handle error */
+  } else {
+    uresult = ui_a >> ui_b;
+  }
+  /* ... */
+}
+```
+
+In this case, popcount is no aviable for our version of C++ but we have `__builtin_popcount`, this do the same thing, no differences. Because of efficiency, there are a constant variable that have the value of the funcion in `UINT32_MAX` that is the maxium value of an `uint32_t`.
+
+```cpp
+const int popcount_var =__builtin_popcount(UINT32_MAX);
+  ...
+  uint32_t uShift = -1; 
+  
+  if (ui_b >= popcount_var) {
+    cout << "Error in wrapFunctionShift with wrapping!!!\nParameters:\n\tui_a=" << to_string(ui_a) << "\n\tui_b="<< to_string(ui_b) << "\n";
+  } else {
+    uShift = ui_a << ui_b | ui_a >> (32 - ui_b); 
+  }
+
+  return uShift;
+```
+
 ### Test fix
