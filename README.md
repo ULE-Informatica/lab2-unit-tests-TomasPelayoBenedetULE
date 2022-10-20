@@ -36,7 +36,7 @@ Then to exec the binary generated:
 
 Added a condition that matches when it's gonna be a wrapping with unsigned ints. Following this [link](https://wiki.sei.cmu.edu/confluence/display/c/INT30-C.+Ensure+that+unsigned+integer+operations+do+not+wrap) we can find this scheme:
 
-```
+```cpp
 void func(unsigned int ui_a, unsigned int ui_b) {
   unsigned int usum;
   if (UINT_MAX - ui_a < ui_b) {
@@ -50,7 +50,7 @@ void func(unsigned int ui_a, unsigned int ui_b) {
 
 It has been written the following lines in our exercise:
 
-```
+```cpp
   unsigned int usum;
   if (UINT_MAX - ui_a < ui_b) {
     cout << "Error in wrapFuntionAdd with wrapping!!!\nParameters:\n\tui_a=" << to_string(ui_a) << "\n\tui_b="<< to_string(ui_b) << "\n";
