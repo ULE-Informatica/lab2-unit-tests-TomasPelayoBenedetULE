@@ -63,7 +63,7 @@ It has been written the following lines in our exercise:
 
 ### wrapFunctionMul
 
-Added a condition that matches when it's gonna be a wrapping with unsigned ints. It has been followed in the same way as the previous function
+Added a condition that matches when it's gonna be a wrapping with multiplication. It has been followed in the same way as the previous function
 It has been written the following lines in our exercise:
 
 ```cpp
