@@ -181,7 +181,7 @@ TEST(wrapAddFunctionTest, WrappingNums) {
 }
 ```
 
-The second one is the fourth test, it's necesary to put an `-1` instead of `0`, because now multiplication wrapping is fixed.
+The second one is the fourth test, it's necesary to put an `-1` instead of `1`, because now multiplication wrapping is fixed.
 
 ```cpp
 TEST(wrapMulFunctionTest, WrappingMulNums) {
